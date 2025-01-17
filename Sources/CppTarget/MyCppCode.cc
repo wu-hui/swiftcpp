@@ -1,4 +1,4 @@
-#include "MyCppHeader.h"
+#include "Sources/CppTarget/include/MyCppHeader.h"
 
 MyCppClass::MyCppClass() {
     std::cout << "MyCppClass constructor called" << std::endl;

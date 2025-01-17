@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "CppClassUtil.h"
+#include "Sources/CppTarget/include/CppClassUtil.h"
 
 class MyCppClass {
 public:
