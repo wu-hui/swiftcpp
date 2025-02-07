@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 #import "Sources/ObjCTarget/include/MyObjCHeader.h"
 #import "Sources/CppTarget/include/MyCppHeader.h"
 
@@ -13,7 +15,9 @@ MyCppClass obj;
 }
 
 - (void)callCppMethod {
-    obj.doSomething();
+    @throw  [[NSException alloc] initWithName:@"Test"
+                                    reason:@"Throwing a objc exception"
+                                  userInfo:nil];
 }
 
 @end
