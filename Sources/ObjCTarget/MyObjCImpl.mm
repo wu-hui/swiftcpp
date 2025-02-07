@@ -20,4 +20,25 @@ MyCppClass obj;
                                   userInfo:nil];
 }
 
+- (bool)safeCallCppMethod:(NSError**) error{
+    @try {
+        @throw  [[NSException alloc] initWithName:@"Test"
+                                    reason:@"Throwing a objc exception"
+                                  userInfo:nil];
+
+        return YES;
+    } @catch (NSException *exception) {
+        if (error != NULL) {
+            *error = [NSError errorWithDomain:@"LegacyErrorDomain"
+                                         code:456
+                                     userInfo:@{
+                                         NSLocalizedDescriptionKey: exception.reason ?: @"Unknown legacy error",
+                                         @"NSExceptionName": exception.name,
+                                         @"NSExceptionUserInfo": exception.userInfo ?: @{}
+                                     }];
+        }
+        return NO;
+    }
+}
+
 @end

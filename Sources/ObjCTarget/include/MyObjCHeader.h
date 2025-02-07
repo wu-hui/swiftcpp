@@ -6,5 +6,6 @@
 
 - (instancetype)init;
 - (void)callCppMethod;
+- (bool)safeCallCppMethod:(NSError**) error;
 
 @end

@@ -4,10 +4,14 @@ import ObjCTarget
 func useCppClass() {
     let objcObject = MyObjCClass.init()
 
-    do{
-        try objcObject!.callCppMethod()
-    } catch {
-        print("Caught an exception: \(error)")
+    var error: NSError?
+    if(objcObject!.safeCallCppMethod(&error)) {
+        print("success")
+    } else {
+        if let nsError = error {
+        print("Operation failed: \(nsError.localizedDescription)")
+        // Access other error details from nsError
+        }
     }
 }
 
